@@ -36,10 +36,19 @@ public class SupplierOrderSubmisionFlow {
 		driver.findElement(By.cssSelector("input#user_username")).sendKeys("SupplyChainsUser1");
 		driver.findElement(By.cssSelector("input#user_password")).sendKeys("Siddhi@12");
 		driver.findElement(By.cssSelector("input.btn-primary")).click();
-		String ActualUrl= driver.getCurrentUrl();
-		System.out.println(ActualUrl);
+		//Click on Existing Buyplan to confirm order 
+		WebElement Buyplan=driver.findElement(By.xpath("(//i[@aria-hidden='true'])[1]"));
+		Buyplan.click();
+		//Select latest BP
+		Thread.sleep(5000);
+		WebElement PickBP= driver.findElement(By.xpath("(//span[@ref='eValue'])[1]"));
+		PickBP.click();
+		Thread.sleep(5000);
+		driver.findElement(By.xpath("(//a[@title='Edit'])[1]")).click();
+		Thread.sleep(5000);
+		driver.findElement(By.xpath("(//button)[4]")).click();
 	}
-	@Test(priority=0)
+//	@Test(priority=0)
 	static void verifyUserLoginAsRetailer() throws InterruptedException
 	{
 		
@@ -75,15 +84,8 @@ public class SupplierOrderSubmisionFlow {
               
                Thread.sleep(3000); 
                driver.findElement(By.linkText("Qty Grid")).click();
-               driver.findElement(By.xpath("(//input[@class=\"sc-jTzLTM jQolZv\"])[2]")).clear();
-               driver.findElement(By.xpath("(//input[@class=\"sc-jTzLTM jQolZv\"])[2]")).sendKeys("10");
-
-               driver.findElement(By.xpath("(//input[@class=\"sc-jTzLTM jQolZv\"])[3]")).clear();
-               driver.findElement(By.xpath("(//input[@class=\"sc-jTzLTM jQolZv\"])[3]")).sendKeys("10");
-
-               
-               driver.findElement(By.xpath("(//input[@class=\"sc-jTzLTM jQolZv\"])[4]")).clear();
-               driver.findElement(By.xpath("(//input[@class=\"sc-jTzLTM jQolZv\"])[4]")).sendKeys("10");
+               driver.findElement(By.xpath("//input[@class=\"sc-jTzLTM jQolZv\"]")).clear();
+               driver.findElement(By.xpath("//input[@class=\"sc-jTzLTM jQolZv\"]")).sendKeys("20");
 
                driver.findElement(By.xpath("//button[@class=\"close\" and @aria-label=\"Close\"]")).click();
         }

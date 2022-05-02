@@ -57,6 +57,38 @@ public class BS_File_Imports {
         upload.click();
     
 	}
+	@Test 
+	void verifyUserCanUploadATS() throws InterruptedException
+	{
+		//verifyUserLoginAsBSAdmin();
+		driver.findElement(By.cssSelector("input#user_username")).sendKeys("josh.brandscope1@gmail.com");
+		driver.findElement(By.cssSelector("input#user_password")).sendKeys("josh$123#");
+		driver.findElement(By.cssSelector("input.btn-primary")).click();
+		
+		WebElement ele = driver.findElement(By.xpath("//span[@class='with_arrow']//span[contains(text(),'Administration')]"));
+		Actions action = new Actions(driver);
+		action.moveToElement(ele).perform();
+		driver.findElement(By.xpath("//a[@href=\"/events/ats\"]")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.className("icon-plus")).click();
+		Thread.sleep(5000);
+		
+		//Select Brand
+		WebElement testDropDown = driver.findElement(By.id("audit_brand"));
+		testDropDown.click();
+		Select dropdown = new Select(testDropDown);
+		dropdown.selectByVisibleText("C.O.D.E");
+		
+		  //Uploading File
+        WebElement uploadElement =driver.findElement(By.id("audit_file_location"));	
+        uploadElement.sendKeys("/home/josh/Documents/C-O-D-E_ATS.csv");
+        Thread.sleep(5000);
 
+        //Upload File Button
+        WebElement upload= driver.findElement(By.xpath("(//button[@type='submit'])[1]"));
+        upload.click();
+		
+        System.out.println("ATS Uploaded Successfuly");
+	}
 	
 }

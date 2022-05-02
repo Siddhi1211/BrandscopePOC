@@ -3,14 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.demoTestcase.SupplierOrderSubmisionFlow">
+      <class name="com.demoTestcase.MinimumOrderValue">
         <methods>
-          <include name="verifyUserLoginAsRetailer"/>
-          <include name="verifyUserLoginAsSupplier"/>
-          <include name="setUp"/>
+          <include name="verifyUserLoginAsBSAdmin"/>
           <include name="tearDown"/>
+          <include name="setUp"/>
+          <include name="verifyUserCanSetMinimumOrderValue"/>
         </methods>
-      </class> <!-- com.demoTestcase.SupplierOrderSubmisionFlow -->
+      </class> <!-- com.demoTestcase.MinimumOrderValue -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
